@@ -33,11 +33,13 @@ def current_weather(city_name,api_key):
 
 
 def get_api():
-	with open('./api_weather', 'r') as f:
-		api = f.read()
+	with open('./api', 'r') as f:
+		for line in f:
+			if line.startswith("weather"):
+				line = line.split()
+				api = line[1]
 		return api
 
 if __name__ == '__main__':
 	api = get_api()
-	print(api)
 	print(current_weather("Gdańsk", api))
