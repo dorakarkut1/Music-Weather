@@ -1,7 +1,7 @@
 
 import requests, json, pytemperature
 import numpy as np
-
+from get_api_number import get_api
 
 def current_weather(city_name,api_key):	
 	
@@ -32,14 +32,8 @@ def current_weather(city_name,api_key):
 		return None
 
 
-def get_api():
-	with open('./api', 'r') as f:
-		for line in f:
-			if line.startswith("weather"):
-				line = line.split()
-				api = line[1]
-		return api
+
 
 if __name__ == '__main__':
-	api = get_api()
+	api = get_api("weather")
 	print(current_weather("Gdańsk", api))
