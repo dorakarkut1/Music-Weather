@@ -3,11 +3,10 @@ import requests, json, pytemperature
 import numpy as np
 
 
-def current_weather(city_name):	
-
-	api_key = "1ea06c4cc9a0c51d7e7eb5b040cf9036"
+def current_weather(city_name,api_key):	
+	
 	base_url = "http://api.openweathermap.org/data/2.5/weather?"
-
+	
 	# complete url address
 	complete_url = base_url + "appid=" + api_key + "&q=" + city_name
 	response = requests.get(complete_url)
@@ -32,5 +31,13 @@ def current_weather(city_name):
 	else:
 		return None
 
+
+def get_api():
+	with open('./api_weather', 'r') as f:
+		api = f.read()
+		return api
+
 if __name__ == '__main__':
-	print(current_weather("Gdańsk"))
+	api = get_api()
+	print(api)
+	print(current_weather("Gdańsk", api))
