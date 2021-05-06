@@ -10,4 +10,4 @@ def get_api(type):
 
 if __name__ == '__main__':
 	type = 'weather'
-	get_api(type)
+	print(get_api(type))
