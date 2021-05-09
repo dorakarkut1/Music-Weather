@@ -10,24 +10,21 @@ def current_weather(city_name,api_key):
 	# complete url address
 	complete_url = base_url + "appid=" + api_key + "&q=" + city_name
 	response = requests.get(complete_url)
-	x = response.json()
+	data = response.json()
 	#check if city was found
-	if x["cod"] != "404":
+	if data["cod"] != "404":
 
 		#unpacking dictionary
-		y = x["main"]
+		y = data["main"]
 
 		current_temperature = np.round(pytemperature.k2c(y["temp"]))
-
 		current_pressure = y["pressure"]
-
 		current_humidity = y["humidity"]
-		#unpacking dictionary
-		z = x["weather"]
+		weather_description = data["weather"][0]["id"]
+		sunrise = data["sys"]["sunrise"]
+		sunset = data["sys"]["sunset"]
 
-		weather_description = z[0]["description"]
-
-		return (current_temperature, current_pressure, current_humidity, weather_description)
+		return (current_temperature, current_pressure, current_humidity, weather_description,sunrise,sunset)
 	else:
 		return None
 
