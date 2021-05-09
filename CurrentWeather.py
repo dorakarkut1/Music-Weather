@@ -2,6 +2,12 @@
 import requests, json, pytemperature
 import numpy as np
 from get_api_number import get_api
+import time
+
+
+def timestamp2time(timestamp):
+	hour = time.strftime("%D %H:%M", time.localtime(int(timestamp)))
+	return hour
 
 def current_weather(city_name,api_key):	
 	
@@ -20,11 +26,12 @@ def current_weather(city_name,api_key):
 		current_temperature = np.round(pytemperature.k2c(y["temp"]))
 		current_pressure = y["pressure"]
 		current_humidity = y["humidity"]
-		weather_description = data["weather"][0]["id"]
-		sunrise = data["sys"]["sunrise"]
-		sunset = data["sys"]["sunset"]
+		weather_description_id = data["weather"][0]["id"]
+		weather_description = data["weather"][0]["description"]
+		sunrise = timestamp2time(data["sys"]["sunrise"]).split()[1]
+		sunset = timestamp2time(data["sys"]["sunset"]).split()[1]
 
-		return (current_temperature, current_pressure, current_humidity, weather_description,sunrise,sunset)
+		return (current_temperature, current_pressure, current_humidity, weather_description, weather_description_id,sunrise,sunset)
 	else:
 		return None
 
