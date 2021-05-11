@@ -1,0 +1,10 @@
+https://openweathermap.org/weather-conditions
+Group 2xx: Thunderstorm kod: 11d.png
+Group 3xx: Drizzle (mżawka) 
+Group 5xx: Rain
+Group 6xx: Snow
+Group 7xx: Atmosphere (mainly smoke or dust)
+Group 800: Clear
+Group 80x: Clouds
+801 few clouds
+pobierac ikony 
