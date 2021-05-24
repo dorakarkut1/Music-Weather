@@ -52,7 +52,7 @@ def current_weather(city_name:str) -> tuple:
     -------
     tuple
 		Set of information about weather: current_temperature: int, current_pressure: int, current_humidity: int, 
-		weather_description: str, weather_description_id: int, sunrise time: tuple(int,int), sunset time: tuple(int,int)
+		weather_description: str, weather_description_id: int, sunrise time: int, sunset time: int
     """
 
 	base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -74,10 +74,12 @@ def current_weather(city_name:str) -> tuple:
 		weather_description = str(data["weather"][0]["description"])
 		sunrise = timestamp2time(data["sys"]["sunrise"]).split()[1].split(":")
 		sunrise = [ int(x) for x in sunrise]
+		sunrise_converted = sunrise[0]+ sunrise[1]/100
 		sunset = timestamp2time(data["sys"]["sunset"]).split()[1].split(":")
 		sunset = [ int(x) for x in sunset]
+		sunset_converted = sunset[0]+ sunset[1]/100
 
-		return (current_temperature, current_pressure, current_humidity, weather_description, weather_description_id,sunrise,sunset)
+		return (current_temperature, current_pressure, current_humidity, weather_description, weather_description_id,sunrise_converted,sunset_converted)
 	else:
 		return None
 
