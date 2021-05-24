@@ -52,7 +52,7 @@ def current_weather(city_name:str) -> tuple:
     -------
     tuple
 		Set of information about weather: current_temperature: int, current_pressure: int, current_humidity: int, 
-		weather_description: str, weather_description_id,sunrise,sunset time
+		weather_description: str, weather_description_id: int, sunrise time: tuple(int,int), sunset time: tuple(int,int)
     """
 
 	base_url = "http://api.openweathermap.org/data/2.5/weather?"

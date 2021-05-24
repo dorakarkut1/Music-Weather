@@ -1,10 +1,18 @@
 https://openweathermap.org/weather-conditions
-Group 2xx: Thunderstorm kod: 11d.png
-Group 3xx: Drizzle (mżawka) 
-Group 5xx: Rain
-Group 6xx: Snow
-Group 7xx: Atmosphere (mainly smoke or dust)
-Group 800: Clear
-Group 80x: Clouds
-801 few clouds
+# between sunrise and sunset 
+Group 2xx: Thunderstorm kod: 11d.png - always storm 
+Group 3xx: Drizzle (mżawka) - rain 
+Group 5xx: Rain - always rain 
+Group 6xx: Snow : snow
+Group 7xx: Atmosphere (mainly smoke or dust) - always rain 
+Group 800: Clear - always sunny, birds ...
+801 few clouds + temp > 20 sunny, birds ...
+Group 80x: Clouds - wind
+
+
+#after sunset:
+if rain:
+	rain
+else:
+	campfire, crickets
 pobierac ikony 
