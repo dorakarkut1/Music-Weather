@@ -22,11 +22,11 @@ def decision_maker():
             return "thunderstorm.mp4"
         elif weather_description_id in [800,801]:
             return "spring.mp4"
-        elif weather_description_id in range(802,899):
+        elif weather_description_id in range(300,399) or weather_description_id in range(802,899):
             return "wind.mp4"
         elif weather_description_id in range(600,699):
             return "snow.mp4"
-        elif weather_description_id in range(300,399) or weather_description_id in range(500,599):
+        elif weather_description_id in range(500,599):
             return "rain.mp4"
 if __name__ == '__main__':
     decision_maker()
