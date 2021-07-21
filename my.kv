@@ -1,0 +1,25 @@
+#:import decision_maker decision.decision_maker 
+<MyGrid>
+	GridLayout:
+		rows:2
+		size: root.width, root.height
+		Video:
+			source: decision_maker()
+			state:'play'
+			options : {'eos': 'loop'}
+			allow_stretch:True
+		GridLayout:
+			cols:2
+			row_force_default:True
+			row_default_height:int(root.height)/8.9
+			Button:
+				text: "PLAY"
+				background_color:[0,0,0,1]
+				size_hint_y:None
+				height:int(root.height)/8.9
+			Button:
+				text: "PAUSE"
+				background_color:[0,0,0,1]
+				size_hint_y:None
+				height:int(root.height)/8.9
+		

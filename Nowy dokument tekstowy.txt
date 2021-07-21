@@ -16,3 +16,5 @@ if rain:
 else:
 	campfire, crickets
 pobierac ikony 
+
+
