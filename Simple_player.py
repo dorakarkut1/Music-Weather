@@ -1,17 +1,19 @@
 import kivy
-from decision import decision_maker
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.video import Video
-from kivy.uix.widget import Widget
-from decision import decision_maker 
-from kivy.core.window import Window
+from kivy.uix.widget import Widget 
+from kivy.properties import ObjectProperty
 
 # An App running a video file
 
 class MyGrid(Widget):
-    pass
+    video = ObjectProperty(None)
+    def press_pause(self):
+        self.video.state='pause'
+    def press_play(self):
+        self.video.state='play'
         
 
 class MyApp(App):
