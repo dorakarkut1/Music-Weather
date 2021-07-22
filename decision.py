@@ -1,8 +1,27 @@
+""" Make decision on video
+This script based on current weather decides which video should be played. It can be imported as module
+and contains the following functions:
+
+    * get_time - returns current hour 
+    * decision_maker - returns name of the video that should be played
+"""
+
 from CurrentWeather import current_weather
 from Get_location import get_location
 import datetime
 
 def get_time():
+    """Returns current hour
+
+    Parameters
+    ----------
+    None 
+
+    Returns
+    -------
+    int
+        Current hour.minutes
+    """
     now_date = datetime.datetime.now()
     hour = int('{:02d}'.format(now_date.hour))
     minute = '{:02d}'.format(now_date.minute)
@@ -10,6 +29,17 @@ def get_time():
     return hour
 
 def decision_maker():
+    """returns name of the video that should be played
+
+    Parameters
+    ----------
+    None 
+
+    Returns
+    ----------
+    str
+        name of the video that should be played: name.mp4
+    """
     (current_temperature, current_pressure, current_humidity, weather_description, weather_description_id,sunrise,sunset) = current_weather(get_location())
     hour = get_time()
  
@@ -28,5 +58,6 @@ def decision_maker():
             return "snow.mp4"
         elif weather_description_id in range(500,599):
             return "rain.mp4"
+
 if __name__ == '__main__':
     decision_maker()
