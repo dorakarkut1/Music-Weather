@@ -70,18 +70,14 @@ def get_current_weather(city_name:str) -> tuple:
     if data["cod"] != "404":
         all_data = data["main"]
         current_temperature = int(np.round(pytemperature.k2c(all_data["temp"])))
-        current_pressure = int(all_data["pressure"])
-        current_humidity = int(all_data["humidity"])
         weather_description_id = int(data["weather"][0]["id"])
-        weather_description = str(data["weather"][0]["description"])
         sunrise = timestamp_2_time(data["sys"]["sunrise"]).split()[1].split(":")
         sunrise = [ int(x) for x in sunrise]
         sunrise_converted = sunrise[0]+ sunrise[1]/100
         sunset = timestamp_2_time(data["sys"]["sunset"]).split()[1].split(":")
         sunset = [ int(x) for x in sunset]
         sunset_converted = sunset[0]+ sunset[1]/100
-        return (current_temperature, current_pressure, current_humidity, weather_description,
-                weather_description_id,sunrise_converted,sunset_converted)
+        return (weather_description_id,sunrise_converted,sunset_converted)
     return None
 
 
