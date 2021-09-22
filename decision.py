@@ -6,7 +6,7 @@ and contains the following functions:
     * decision_maker - returns name of the video that should be played
 """
 
-from CurrentWeather import current_weather
+from current_weather import get_current_weather
 from Get_location import get_location
 import datetime
 
@@ -40,7 +40,8 @@ def decision_maker():
     str
         name of the video that should be played: name.mp4
     """
-    (current_temperature, current_pressure, current_humidity, weather_description, weather_description_id,sunrise,sunset) = current_weather(get_location())
+    print(get_location())
+    (current_temperature, current_pressure, current_humidity, weather_description, weather_description_id,sunrise,sunset) = get_current_weather("Gdańsk")
     hour = get_time()
  
     if (hour > sunset or hour < sunrise) and weather_description_id in [800,801]:
